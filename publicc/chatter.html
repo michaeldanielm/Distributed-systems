@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+         <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+        <title>Chat Server</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="//cdn.rawgit.com/feathersjs/feathers-chat/v0.2.0/public/base.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/feathersjs/feathers-chat/v0.2.0/public/chat.css">
+ 
+        <title></title>
+    </head>
+    <style>
+      .sm{
+        background-color: greenyellow ;
+        border-radius: 10px;
+        color: black;
+        margin-left: 40%;
+      }
+      .image-upload > input
+      {
+          display: none;
+      }
+
+      .image-upload img
+      {
+          width: 40px;
+          cursor: pointer;
+      }
+      
+    </style>
+    <body>
+       
+     
+
+        <main class="flex flex-column">
+            
+            <header class="title-bar flex flex-row flex-center">
+              <div class="title-wrapper block center-element">
+                <!-- <img class="logo" src="http://feathersjs.com/img/feathers-logo-wide.png"> -->
+                  
+                <span class="title"><p>Bienvenido al Chat Sockets Envio</p><span></span></span>
+              </div>
+            </header>
+            <div class="flex flex-row flex-1 clear">
+              <aside class="sidebar col col-3 flex flex-column flex-space-between">
+                <header class="flex flex-row flex-center">
+                  <h4 class="font-300 text-center">
+                    <span class="font-600 online-count">0</span> Usarios en linea
+                  </h4>
+                </header>
+                <ul class="flex flex-column flex-1 list-unstyled user-list"></ul>
+                <footer class="flex flex-row flex-center">
+                  
+                </footer>
+              </aside>
+        <div class="flex flex-column col col-9">
+            <main class="chat flex flex-column flex-1 clear"></main>
+            <form class="flex flex-row flex-space-between" id="message-form" enctype="multipart/form-data">
+              <input type="text" id="input" name="message" class="flex flex-1" autofocus autocomplete="off">
+
+              <span class="image-upload">
+                <label for="file-input" style="width: 5px;">
+                    <img src="img/1.png" height="35px;"/>
+                </label>
+            
+                <input id="file-input" type="file" name="file"/>
+              </span>
+              <button class="button-primary" id="submit-btn" type="submit">Enviar</button>
+            </form>
+        </div>
+        </main>
+
+        
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/siofu/client.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/libs/moment.js"></script>
+        <script type="text/javascript" src="js/libs/mustache.js"></script>
+        <script id="message-template" type="text/template">
+            
+        <div class="message flex flex-row">
+            <div class="message-wrapper">
+                <p class="message-header m">
+                  <span class="sent-date font-300">{{createdAt}}</span>
+                  <span class="username font-600"><strong>{{from}}</strong></span>
+                  
+                  <p class="message-content font-300">{{text}}</p>
+                </p>
+                
+            </div>
+        </div>      
+        </script>
+
+        <script id="message-temp" type="text/template">
+            
+          <div class="message flex flex-row">
+              <div class="message-wrapper">
+                  <p class="message-header m">
+                    <span class="sent-date font-300">{{createdAt}}&nbsp;</span>
+                    <span class="message-content font-300">{{text}}</span>
+                  </p>
+                  
+              </div>
+          </div>      
+          </script>
+
+
+        <script id="message-my" type="text/template">
+            
+          <div class="message">
+              <div class="">
+                  <p class="message-header m">
+                    <span class="sent-date font-300" style="float:right;">{{createdAt}}</span>
+                    <p class="message-content font-300" style="float:right;">{{text}}&nbsp;&nbsp;</p>
+                             
+                  </p>
+                  
+              </div>
+          </div>      
+          </script>
+
+
+          <script id="message-myimage" type="text/template">
+            
+            <div class="message">
+                <div class="">
+                    <p class="message-header m" style="float:right;">
+                      <img src="uploads/{{text}}" width="120px" height="120px">
+                      <span class="sent-date font-300" >{{createdAt}}</span>
+                                
+                      <!-- <a href="uploads/{{text}}" height="200" width="300" download>{{text}}</a> -->
+                    </p>
+                    
+                </div>
+            </div>      
+            </script>
+
+            <script id="message-chatterimage" type="text/template">
+            
+              <div class="message">
+                  <div class="message-wrapper">
+                      <p class="message-header m">
+                        <span class="sent-date font-300">{{createdAt}}</span>
+                        <a href="uploads/{{text}}" download><img src="uploads/{{text}}" width="120px" height="120px"></a>
+                      </p>
+                      
+                  </div>
+              </div>      
+              </script>
+
+          <script id="message-admin" type="text/template">
+            
+            <div class="message">
+                <div class="">
+                    <span class="message-header">
+                       
+                      <span class="message-content font-300 sm">{{text}}</span>
+                    </span>
+                    
+                </div>
+            </div>      
+            </script>
+
+            <script id="message-date" type="text/template">
+            
+              <div class="message">
+                  <div class="">
+                      <span class="message-header">
+                        <span class="sent-date font-300 sm" style="background-color: grey;">{{createdAt}}</span>           
+                      </span>
+                      
+                  </div>
+              </div>      
+              </script>
+    </body>
+</html>

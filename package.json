@@ -1,0 +1,28 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "first nodejs file",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha **/*.test.js",
+    "test-watch": "nodemon --exec \"npm test\""
+  },
+  "engine": {
+    "node": "12.18.2"
+  },
+  "author": "Michael Daniel Murillo Lopez",
+  "license": "ISC",
+  "dependencies": {
+    "expect": "^26.1.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mime": "^2.4.6",
+    "mocha": "^8.0.1",
+    "moment": "^2.27.0",
+    "multer": "^1.4.2",
+    "socket.io": "^2.3.0",
+    "socketio-file-upload": "^0.7.2",
+    "util": "^0.12.3"
+  }
+}
