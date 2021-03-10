@@ -98,7 +98,7 @@ io.on('connection',(socket)=>{
                                 
         }
         
-        callback('This is the Server');
+        callback('Este es el servidor');
         
     });
     
@@ -108,9 +108,9 @@ io.on('connection',(socket)=>{
 
         if(user){
             io.to(user.room).emit('updateUsersList',users.getUserList(user.room));
-            io.to(user.room).emit('adminMessage',generateAdmin(user.name +' has left the chat room'));
+            io.to(user.room).emit('adminMessage',generateAdmin(user.name +'ha salido de la sala de chat'));
         }
-        console.log("user was disconnected");
+        console.log("El usuario fue desconectado");
     });
 });
 
